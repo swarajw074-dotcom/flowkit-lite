@@ -1,4 +1,4 @@
-
+import './globals.css';
 export const metadata = { title: "Flowkit Lite", description: "Minimal n8n-like workflow builder" };
 export default function RootLayout({ children }) {
   return (
