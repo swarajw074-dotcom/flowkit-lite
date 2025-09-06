@@ -6,6 +6,11 @@ export async function POST(req) {
   const name = (form.get("name") || "").toString().trim() || "Untitled Flow";
   const flow = await createFlow(name);
 
-  // Use a relative redirect so the browser keeps the same domain (works on Render)
-  return NextResponse.redirect(`/flow/${flow.id}`, 303);
+  // Build absolute URL from proxy headers (works on Render)
+  const h = req.headers;
+  const host = h.get("x-forwarded-host") || h.get("host");
+  const proto = h.get("x-forwarded-proto") || "https";
+  const url = `${proto}://${host}/flow/${flow.id}`;
+
+  return NextResponse.redirect(url, 303);
 }
