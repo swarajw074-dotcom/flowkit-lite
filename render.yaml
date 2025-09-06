@@ -1,0 +1,19 @@
+
+services:
+  - type: web
+    name: flowkit-lite
+    env: node
+    plan: free
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: flow-data
+      mountPath: /var/data
+      sizeGB: 1
