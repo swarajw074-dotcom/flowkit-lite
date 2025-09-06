@@ -2,7 +2,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
 import ReactFlow, { addEdge, Background, Controls, MiniMap, ReactFlowProvider, Connection, useEdgesState, useNodesState } from "reactflow";
-import "reactflow/dist/style.css";
 function EditorInner({ flowId, initialFlow }) {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialFlow.nodes || []);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialFlow.edges || []);
