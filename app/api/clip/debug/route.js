@@ -10,11 +10,8 @@ export async function GET() {
   if (exists) {
     try { content = await fs.readJson(CLIPS_FILE); } catch (e) { error = String(e); }
   }
-  return NextResponse.json({
-    DATA_DIR,
-    CLIPS_FILE,
-    exists,
-    content,
-    error
-  }, { headers: { "Cache-Control": "no-store" } });
+  return NextResponse.json(
+    { DATA_DIR, CLIPS_FILE, exists, content, error },
+    { headers: { "Cache-Control": "no-store" } }
+  );
 }
