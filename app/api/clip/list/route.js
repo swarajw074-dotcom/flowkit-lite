@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const jobs = await listJobs();
-  jobs.sort((a, b) => b.updatedAt - a.updatedAt);
+  jobs.sort((a, b) => b.updatedAt - a.updatedAt); // newest first
   return NextResponse.json(
     { jobs },
     { headers: { "Cache-Control": "no-store, must-revalidate" } }
